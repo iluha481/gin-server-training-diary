@@ -41,7 +41,9 @@ func main() {
 	r.GET("/getuserdata", controllers.RequireAuth, controllers.GetUserData)
 
 	r.POST("/updateuserdata", controllers.RequireAuth, controllers.UpdateUserData)
-	r.Run()
+	host := os.Getenv("HOST")
+	port := os.Getenv("PORT")
+	r.Run(host + ":" + port)
 }
 
 func Init() {
